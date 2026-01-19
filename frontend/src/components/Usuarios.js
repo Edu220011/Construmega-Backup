@@ -1,11 +1,12 @@
 
 import React, { useEffect, useState } from 'react';
+import { apiFetch } from '../utils/api';
 
 // Hook para buscar dados da empresa (endereço e telefone)
 function useEmpresaConfig() {
   const [empresa, setEmpresa] = useState(null);
   useEffect(() => {
-    fetch('/api/configuracoes')
+    apiFetch('/configuracoes')
       .then(res => res.json())
       .then(data => setEmpresa(data));
   }, []);
