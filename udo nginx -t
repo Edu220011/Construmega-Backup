@@ -1,0 +1,21 @@
+[0;1;32m●[0m nginx.service - The nginx HTTP and reverse proxy server
+     Loaded: loaded (]8;;file://vps-14807300.construmega.com.br/usr/lib/systemd/system/nginx.service/usr/lib/systemd/system/nginx.service]8;;; [0;1;32menabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sun 2026-01-18 23:30:36 -03; 29min ago
+    Process: 2978800 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
+    Process: 2978802 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
+    Process: 2978803 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
+    Process: 3003315 ExecReload=/usr/sbin/nginx -s reload (code=exited, status=0/SUCCESS)
+   Main PID: 2978804 (nginx)
+      Tasks: 2 (limit: 10651)
+     Memory: 4.1M (peak: 11.3M)
+        CPU: 49ms
+     CGroup: /system.slice/nginx.service
+             ├─[0;38;5;245m2978804 "nginx: master process /usr/sbin/nginx"[0m
+             └─[0;38;5;245m3003316 "nginx: worker process"[0m
+
+Jan 18 23:30:36 vps-14807300.construmega.com.br systemd[1]: Starting The nginx HTTP and reverse proxy server...
+Jan 18 23:30:36 vps-14807300.construmega.com.br nginx[2978802]: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+Jan 18 23:30:36 vps-14807300.construmega.com.br nginx[2978802]: nginx: configuration file /etc/nginx/nginx.conf test is successful
+Jan 18 23:30:36 vps-14807300.construmega.com.br systemd[1]: Started The nginx HTTP and reverse proxy server.
+Jan 18 23:58:58 vps-14807300.construmega.com.br systemd[1]: Reloading The nginx HTTP and reverse proxy server...
+Jan 18 23:58:58 vps-14807300.construmega.com.br systemd[1]: Reloaded The nginx HTTP and reverse proxy server.

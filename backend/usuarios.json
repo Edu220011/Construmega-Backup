@@ -9,9 +9,9 @@
     "tipo": "admin",
     "id": "486650",
     "ativo": true,
-    "pontos": 4,
-    "tokenAtual": "38525c8570257020627c0e75a9b00e0120e5eac5ed72cc210ff6f85e5da532af",
-    "tokenExpiracao": 1768883559545
+    "pontos": 5,
+    "tokenAtual": "e878cd6c766e0d6811031c0bd5ded734c9aa6d8fdc71129b37463eee0a1ae53e",
+    "tokenExpiracao": 1768881285682
   },
   {
     "nome": "Marcus Vinicius da Silva Goulart",
@@ -55,8 +55,8 @@
     "senha": "$2b$10$uAwp4igX2dH.47Xprd.0WOgxMhg1dAJkg3nCgHb5xreCyKgCu4XxK",
     "tipo": "cliente",
     "id": "935083",
-    "pontos": 49995,
-    "tokenAtual": "df16845160bc4063d6bbfc6142470adcc6b68b3e33c72e6000c615ae3ecc7216",
-    "tokenExpiracao": 1768883495733
+    "pontos": 49996,
+    "tokenAtual": "44fc5d6e06a8aea2104999cb4294a0958d4d11d2239210ff006eeb10b58766b8",
+    "tokenExpiracao": 1768880907224
   }
 ]
