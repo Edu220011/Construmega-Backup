@@ -1,0 +1,75 @@
+[
+  {
+    "nome": "Eduardo Antonio",
+    "cpf": "111.111.111-11",
+    "telefone": "(11)11111-1111",
+    "endereco": "Rua Alonso Leonel de Paiva 196",
+    "email": "dudu.kcond77@gmail.com",
+    "senha": "$2b$10$V97qNPxLQ5eJddrPVSPBh.y7oTNwQ5g3RU5pycL.z7og.PkqYyGt.",
+    "tipo": "admin",
+    "id": "486650",
+    "ativo": true,
+    "pontos": 5,
+    "tokenAtual": "70afeec8804d72e828864231f770147f9ff5f8c719ab8e0a38dee964770a2e7a",
+    "tokenExpiracao": 1768907196394
+  },
+  {
+    "nome": "Marcus Vinicius da Silva Goulart",
+    "cpf": "420.557.708-70",
+    "telefone": "(19) 98159-2242",
+    "endereco": "timbiras 34",
+    "email": "marcusmvsg@gmail.com",
+    "senha": "$2b$10$GYI8RGtCVPdF5TI/7BQ/TOGhTTkkmnD9JT2ToRyuaBleePysoVg1i",
+    "tipo": "cliente",
+    "id": "565861",
+    "pontos": 5
+  },
+  {
+    "nome": "elen moraes",
+    "cpf": "557.316.568-27",
+    "telefone": "(19) 98297-4680",
+    "endereco": "heitor tardeli ",
+    "email": "elenmoraes83050970@gmail.com",
+    "senha": "$2b$10$uh2oGKkvuexUN/Hmpwl0vufVLjMDnesPeZTxTqF0ndmzwvOsex12C",
+    "tipo": "cliente",
+    "id": "499150",
+    "pontos": 0
+  },
+  {
+    "nome": "mauricio sebastiao marciano ",
+    "cpf": "385.667.928-66",
+    "telefone": "(19) 98239-7380",
+    "endereco": "marcianomau@gmail.com",
+    "email": "marcianomau@gmail.com",
+    "senha": "$2b$10$Y27XdemP2Aeb4k4NZieXS.Fw6uLlu6yficVmbkpJNtQ9BWlZE/CGC",
+    "tipo": "cliente",
+    "id": "442829",
+    "pontos": 0
+  },
+  {
+    "nome": "Eduardo Antonio",
+    "cpf": "124.742.066-39",
+    "telefone": "(19)99959-5231",
+    "endereco": "Rua Alonso Leonel de Paiva, Santa Lucia",
+    "email": "dudu.almeidakcond@gmail.com",
+    "senha": "$2b$10$uAwp4igX2dH.47Xprd.0WOgxMhg1dAJkg3nCgHb5xreCyKgCu4XxK",
+    "tipo": "cliente",
+    "id": "935083",
+    "pontos": 49991,
+    "tokenAtual": "c07f1528bd69eae4771d8e7896b5a9ee2c16dd34e6828cb5a11fc6ca93763678",
+    "tokenExpiracao": 1768906875648
+  },
+  {
+    "nome": "Paulo José Cepolini Filho",
+    "cpf": "352.470.388-78",
+    "telefone": "(19)98230-7902",
+    "endereco": "Av. Henrique Agostineto, 502A - Várzea, Caconde/SP.",
+    "email": "paulinho.edu.fisica@gmail.com",
+    "senha": "$2b$10$SZQJZfKPOtKdbnn.f6exRO7x0LcWNR2LHMXQyMMz18S7AImRpGDNa",
+    "tipo": "admin",
+    "id": "837814",
+    "pontos": 0,
+    "tokenAtual": "912afddfd0a929146890e8af4d0e4385ec5c0c2b5f4efbb71de42a07f0186cd2",
+    "tokenExpiracao": 1768906831988
+  }
+]
