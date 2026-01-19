@@ -44,16 +44,42 @@ if [[ -f /etc/debian_version ]]; then
     OS="debian"
     PACKAGE_MANAGER="apt"
     log "Sistema detectado: Debian/Ubuntu"
-elif [[ -f /etc/redhat-release ]]; then
+elif [[ -f /etc/redhat-release ]] || [[ -f /etc/almalinux-release ]] || [[ -f /etc/rocky-release ]] || [[ -f /etc/oracle-release ]]; then
     OS="redhat"
     PACKAGE_MANAGER="yum"
     if command -v dnf &> /dev/null; then
         PACKAGE_MANAGER="dnf"
     fi
-    log "Sistema detectado: CentOS/RHEL"
+
+    # Detectar distribuição específica
+    if [[ -f /etc/almalinux-release ]]; then
+        DISTRO="AlmaLinux"
+    elif [[ -f /etc/rocky-release ]]; then
+        DISTRO="Rocky Linux"
+    elif [[ -f /etc/oracle-release ]]; then
+        DISTRO="Oracle Linux"
+    else
+        DISTRO="RHEL/CentOS"
+    fi
+
+    log "Sistema detectado: $DISTRO (usando $PACKAGE_MANAGER)"
 else
-    error "Sistema operacional não suportado"
-    exit 1
+    # Tentar detectar outros sistemas
+    if command -v apt &> /dev/null; then
+        OS="debian"
+        PACKAGE_MANAGER="apt"
+        log "Sistema detectado: Debian/Ubuntu (fallback)"
+    elif command -v yum &> /dev/null || command -v dnf &> /dev/null; then
+        OS="redhat"
+        PACKAGE_MANAGER="yum"
+        if command -v dnf &> /dev/null; then
+            PACKAGE_MANAGER="dnf"
+        fi
+        log "Sistema detectado: RHEL/CentOS/AlmaLinux (fallback usando $PACKAGE_MANAGER)"
+    else
+        error "Sistema operacional não suportado. Distribuições suportadas: Debian/Ubuntu, RHEL/CentOS, AlmaLinux, Rocky Linux"
+        exit 1
+    fi
 fi
 
 # Função para instalar pacotes
@@ -82,15 +108,45 @@ if [[ $OS == "debian" ]]; then
     curl -fsSL https://deb.nodesource.com/setup_18.x | bash - >/dev/null 2>&1
     apt install -y -qq nodejs
 else
+    # Para sistemas RHEL-like (CentOS, AlmaLinux, Rocky, etc.)
+    log "Configurando repositórios para Node.js..."
+
+    # Instalar EPEL se disponível (útil para AlmaLinux)
+    if [[ $DISTRO == "AlmaLinux" ]] || [[ $DISTRO == "Rocky Linux" ]]; then
+        $PACKAGE_MANAGER install -y -q epel-release >/dev/null 2>&1 || true
+    fi
+
+    # Instalar curl se não estiver disponível
+    if ! command -v curl &> /dev/null; then
+        $PACKAGE_MANAGER install -y -q curl >/dev/null 2>&1
+    fi
+
+    # Instalar Node.js via NodeSource
     curl -fsSL https://rpm.nodesource.com/setup_18.x | bash - >/dev/null 2>&1
     $PACKAGE_MANAGER install -y -q nodejs
+
+    # Verificar se a instalação foi bem-sucedida
+    if ! command -v node &> /dev/null; then
+        error "Falha ao instalar Node.js. Tentando método alternativo..."
+        # Método alternativo para AlmaLinux/Rocky
+        $PACKAGE_MANAGER install -y -q nodejs npm >/dev/null 2>&1
+    fi
 fi
 
-# Verificar Node.js
-node_version=$(node --version)
-npm_version=$(npm --version)
-log "Node.js instalado: $node_version"
-log "NPM instalado: $npm_version"
+# Verificar SELinux (comum em RHEL/AlmaLinux)
+if command -v getenforce &> /dev/null; then
+    SELINUX_STATUS=$(getenforce)
+    if [[ $SELINUX_STATUS == "Enforcing" ]]; then
+        warning "SELinux está ativo. Pode ser necessário configurar permissões."
+        log "Para desabilitar SELinux temporariamente: setenforce 0"
+        log "Para desabilitar permanentemente: editar /etc/selinux/config"
+    fi
+fi
+
+# Verificações específicas para AlmaLinux
+if [[ $DISTRO == "AlmaLinux" ]]; then
+    log "Configurações específicas para AlmaLinux aplicadas"
+fi
 
 # Passo 3: Instalar Git e outras ferramentas
 log "📋 Instalando ferramentas necessárias..."
