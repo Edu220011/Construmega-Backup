@@ -1,0 +1,20 @@
+{
+  "short_name": "Construmega",
+  "name": "Construmega - Loja de Materiais de Construção",
+  "icons": [
+    {
+      "src": "/logo-construmega.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo-construmega.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#667eea",
+  "background_color": "#ffffff"
+}

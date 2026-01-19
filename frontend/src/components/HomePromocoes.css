@@ -1,0 +1,89 @@
+.promo-card-home {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+  padding: 28px;
+  text-align: center;
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.promo-card-home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.03) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 24px;
+}
+
+.promo-card-home:hover::before {
+  opacity: 1;
+}
+
+.promo-card-home:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(139, 157, 195, 0.25);
+  border: 2px solid rgba(102, 126, 234, 0.3);
+}
+
+.promo-card-home-btn {
+  margin-top: 20px;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  opacity: 0;
+  transform: translateY(30px) scale(0.9);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 1.3, 0.5, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-card-home-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.promo-card-home:hover .promo-card-home-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.promo-card-home-btn:hover::before {
+  left: 100%;
+}
+
+.promo-card-home-btn:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.5);
+}

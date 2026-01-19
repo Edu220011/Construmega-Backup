@@ -1,0 +1,49 @@
+.carrossel-animado img {
+  opacity: 1;
+}
+.carrossel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(51,62,140,0.8);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 2;
+  transition: background .2s;
+}
+.carrossel-btn-esq {
+  left: 8px;
+}
+.carrossel-btn-dir {
+  right: 8px;
+}
+.carrossel-btn:hover {
+  background: #1D2A5A;
+}
+.carrossel-indicadores {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+.carrossel-indicadores span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #bfcfff;
+  opacity: 0.7;
+  transition: background .2s, opacity .2s;
+}
+.carrossel-indicadores .ativo {
+  background: #333E8C;
+  opacity: 1;
+}
