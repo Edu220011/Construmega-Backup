@@ -1,31 +1,16 @@
-<<<<<<< HEAD
-=======
-// Tratamento global de erros não tratados
-process.on('uncaughtException', function (err) {
-  console.error('Uncaught Exception:', err);
-});
-process.on('unhandledRejection', function (reason, promise) {
-  console.error('Unhandled Rejection:', reason);
-});
-
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 console.log('=== INÍCIO DO ARQUIVO INDEX.JS - VERSÃO SEM MIDDLEWARES ESTÁTICOS ===');
 const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
 const crypto = require('crypto');
-<<<<<<< HEAD
 const bcrypt = require('bcrypt');
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 require('dotenv').config();
 
 // Tokens de admin
 let adminToken = null;
 let adminTokenExpiracao = null;
 
-<<<<<<< HEAD
 // Funções para hash de senhas
 const SALT_ROUNDS = 10;
 
@@ -37,8 +22,6 @@ async function verifyPassword(password, hash) {
   return await bcrypt.compare(password, hash);
 }
 
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 // Verificar se o token foi carregado
 console.log('MP_ACCESS_TOKEN carregado:', !!process.env.MP_ACCESS_TOKEN);
 console.log('MP_ACCESS_TOKEN valor (primeiros 10 chars):', process.env.MP_ACCESS_TOKEN ? process.env.MP_ACCESS_TOKEN.substring(0, 10) + '...' : 'undefined');
@@ -65,7 +48,6 @@ app.set('maxHttpHeaderSize', 65536); // 64KB
 app.use(cors({
   maxHttpBufferSize: 100 * 1024 * 1024 // 100MB
 }));
-<<<<<<< HEAD
 
 // ========== MIDDLEWARE DE SEGURANÇA ==========
 
@@ -159,19 +141,13 @@ app.use((req, res, next) => {
 
 // ========== FIM DO MIDDLEWARE DE SEGURANÇA ==========
 
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 // Middleware global para aceitar JSON maior (até 50mb)
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 // Middleware de log para todas as requisições
 app.use((req, res, next) => {
-<<<<<<< HEAD
   console.log(`🔍 [${new Date().toISOString()}] ${req.method} ${req.url} from ${req.ip}`);
-=======
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   next();
 });
 
@@ -223,10 +199,7 @@ initMercadoPago();
 
 // Rota de login
 app.post('/api/login', async (req, res) => {
-<<<<<<< HEAD
   console.log('🔥 LOGIN ROUTE HIT - Body:', req.body);
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   try {
     const { email, senha } = req.body;
     
@@ -253,7 +226,6 @@ app.post('/api/login', async (req, res) => {
 
     // Verificar usuários normais
     const usuarios = await readJson('usuarios.json');
-<<<<<<< HEAD
     let usuario = null;
     
     for (const u of usuarios) {
@@ -266,9 +238,6 @@ app.post('/api/login', async (req, res) => {
         }
       }
     }
-=======
-    const usuario = usuarios.find(u => (u.email === email || u.cpf === email) && u.senha === senha);
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 
     if (!usuario) {
       return res.status(401).json({ erro: 'Credenciais inválidas' });
@@ -303,7 +272,6 @@ app.post('/api/login', async (req, res) => {
 
 console.log('✅ Rota /login registrada');
 
-<<<<<<< HEAD
 // Rota de login alternativa para formulários (sem JS)
 app.post('/login', async (req, res) => {
   console.log('🔥 LOGIN FORM ROUTE HIT - Body:', req.body);
@@ -359,8 +327,6 @@ app.post('/login', async (req, res) => {
 
 console.log('✅ Rota /login (form) registrada');
 
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 // Adicionar pontos ao usuário
 app.post('/api/usuarios/:id/pontos', async (req, res) => {
   try {
@@ -440,7 +406,6 @@ async function readJson(file) {
   }
 }
 async function writeJson(file, data) {
-<<<<<<< HEAD
   try {
     await fs.writeFile(getFile(file), JSON.stringify(data, null, 2));
     console.log(`✅ Arquivo ${file} escrito com sucesso`);
@@ -448,9 +413,6 @@ async function writeJson(file, data) {
     console.error(`❌ Erro ao escrever ${file}:`, err.message);
     throw err; // relançar para que o catch da rota pegue
   }
-=======
-  await fs.writeFile(getFile(file), JSON.stringify(data, null, 2));
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 }
 
 // Função utilitária para gerar chave de 25 caracteres (letras e números)
@@ -487,12 +449,8 @@ app.put('/usuarios/:id/senha', async (req, res) => {
   let usuarios = await readJson('usuarios.json');
   const idx = usuarios.findIndex(u => u.id == req.params.id);
   if (idx === -1) return res.status(404).json({ erro: 'Usuário não encontrado.' });
-<<<<<<< HEAD
   // Fazer hash da nova senha
   usuarios[idx].senha = await hashPassword(senha);
-=======
-  usuarios[idx].senha = senha;
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   await writeJson('usuarios.json', usuarios);
   res.json({ sucesso: true });
 });
@@ -512,7 +470,6 @@ app.put('/usuarios/:id/alterar-senha', async (req, res) => {
     }
     
     // Verificar se a senha atual está correta
-<<<<<<< HEAD
     const senhaCorreta = await verifyPassword(senhaAtual, usuarios[idx].senha);
     if (!senhaCorreta) {
       return res.status(400).json({ erro: 'Senha atual incorreta.' });
@@ -520,14 +477,6 @@ app.put('/usuarios/:id/alterar-senha', async (req, res) => {
     
     // Atualizar para a nova senha (com hash)
     usuarios[idx].senha = await hashPassword(novaSenha);
-=======
-    if (usuarios[idx].senha !== senhaAtual) {
-      return res.status(400).json({ erro: 'Senha atual incorreta.' });
-    }
-    
-    // Atualizar para a nova senha
-    usuarios[idx].senha = novaSenha;
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
     await writeJson('usuarios.json', usuarios);
     res.json({ sucesso: true, mensagem: 'Senha alterada com sucesso!' });
   } catch (err) {
@@ -555,7 +504,6 @@ app.delete('/usuarios/:id', async (req, res) => {
 });
 
 // Rotas para produtos
-<<<<<<< HEAD
 app.get('/produtos', async (req, res) => {
   console.log('🔍 GET /produtos chamado');
   try {
@@ -578,8 +526,6 @@ app.get('/produtos', async (req, res) => {
   }
 });
 
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
 app.get('/api/produtos', async (req, res) => {
   console.log('📋 Rota /api/produtos GET chamada');
   console.log('📋 Headers:', JSON.stringify(req.headers));
@@ -640,13 +586,10 @@ app.post('/api/produtos', async (req, res) => {
     estoque = Number(req.body.estoque) || 0;
   }
   const novo = { ...req.body, imagens, id, estoque };
-<<<<<<< HEAD
   // Mapear foto para imagens[0] para compatibilidade
   if (imagens.length > 0) {
     novo.foto = imagens[0];
   }
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   produtos.push(novo);
   await writeJson('produtos.json', produtos);
   res.json(novo);
@@ -669,13 +612,10 @@ app.put('/api/produtos/:id', async (req, res) => {
     imagens = [produtos[idx].imagem];
   }
   produtos[idx] = { ...produtos[idx], ...req.body, imagens };
-<<<<<<< HEAD
   // Mapear foto para imagens[0] para compatibilidade
   if (imagens.length > 0) {
     produtos[idx].foto = imagens[0];
   }
-=======
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   await writeJson('produtos.json', produtos);
   res.json({ sucesso: true });
 });
@@ -722,7 +662,6 @@ app.get('/usuarios', async (req, res) => {
 
 app.post('/usuarios', async (req, res) => {
   let usuarios = await readJson('usuarios.json');
-<<<<<<< HEAD
   
   // Verificar se já existe um usuário com o mesmo email (CPF)
   const usuarioExistente = usuarios.find(u => u.email === req.body.email);
@@ -737,12 +676,6 @@ app.post('/usuarios', async (req, res) => {
   if (req.body.tipo === 'admin') {
     // Admin não recebe id, mas agora recebe pontos: 0
     novo = { ...req.body, senha: senhaHashed, pontos: 0 };
-=======
-  let novo;
-  if (req.body.tipo === 'admin') {
-    // Admin não recebe id, mas agora recebe pontos: 0
-    novo = { ...req.body, pontos: 0 };
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   } else {
     // Cliente recebe id e pontos
     let id;
@@ -751,11 +684,7 @@ app.post('/usuarios', async (req, res) => {
       id = String(Math.floor(100000 + Math.random() * 900000));
       exists = usuarios.some(u => u.id === id);
     }
-<<<<<<< HEAD
     novo = { ...req.body, senha: senhaHashed, id, pontos: 0 };
-=======
-    novo = { ...req.body, id, pontos: 0 };
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
   }
   usuarios.push(novo);
   await writeJson('usuarios.json', usuarios);
@@ -798,7 +727,6 @@ app.get('/pedidos/:usuarioId', async (req, res) => {
 
 // Novo fluxo de resgate de produto por pontos
 app.post('/pedidos', async (req, res) => {
-<<<<<<< HEAD
   console.log('🔥 POST /pedidos chamado - Body:', req.body);
   try {
     let { usuarioId, produtoId, pontos, valor, produtoNome, codigoUsuario, quantidade = 1 } = req.body;
@@ -806,17 +734,10 @@ app.post('/pedidos', async (req, res) => {
     // 1. Verificação do usuário
     if (!usuarioId || !produtoId) {
       console.log('❌ Dados inválidos: usuarioId ou produtoId ausente');
-=======
-  try {
-    let { usuarioId, produtoId, pontos, valor, produtoNome, codigoUsuario, quantidade = 1 } = req.body;
-    // 1. Verificação do usuário
-    if (!usuarioId || !produtoId) {
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
       return res.status(400).json({ erro: 'Dados inválidos.' });
     }
     let usuarios = await readJson('usuarios.json');
     const userIdx = usuarios.findIndex(u => String(u.id) === String(usuarioId));
-<<<<<<< HEAD
     console.log('userIdx:', userIdx, 'usuarios.length:', usuarios.length);
     if (userIdx === -1) {
       console.log('❌ Usuário não encontrado');
@@ -827,14 +748,6 @@ app.post('/pedidos', async (req, res) => {
     // Verifica código do usuário se existir no sistema
     if (user.codigo && codigoUsuario && String(user.codigo) !== String(codigoUsuario)) {
       console.log('❌ Código do usuário inválido');
-=======
-    if (userIdx === -1) {
-      return res.status(404).json({ erro: 'Usuário não encontrado.' });
-    }
-    const user = usuarios[userIdx];
-    // Verifica código do usuário se existir no sistema
-    if (user.codigo && codigoUsuario && String(user.codigo) !== String(codigoUsuario)) {
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
       return res.status(400).json({ erro: 'Código do usuário inválido.' });
     }
 
@@ -849,7 +762,6 @@ app.post('/pedidos', async (req, res) => {
     if (isResgatePontos) {
       // Corrige tipo de pontos (string para number se necessário)
       pontos = Number(pontos);
-<<<<<<< HEAD
       console.log('Pontos necessários:', pontos * quantidade, 'usuário tem:', user.pontos ?? 0);
       if (isNaN(pontos) || pontos <= 0) {
         console.log('❌ Pontos inválidos');
@@ -857,12 +769,6 @@ app.post('/pedidos', async (req, res) => {
       }
       if ((user.pontos ?? 0) < pontos * quantidade) {
         console.log('❌ Pontos insuficientes');
-=======
-      if (isNaN(pontos) || pontos <= 0) {
-        return res.status(400).json({ erro: 'Pontos inválidos.' });
-      }
-      if ((user.pontos ?? 0) < pontos * quantidade) {
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
         return res.status(400).json({ erro: 'Pontos insuficientes.' });
       }
     }
@@ -870,7 +776,6 @@ app.post('/pedidos', async (req, res) => {
     // 2. Verificação do produto
     let produtos = await readJson('produtos.json');
     const prodIdx = produtos.findIndex(p => String(p.id) === String(produtoId));
-<<<<<<< HEAD
     console.log('prodIdx:', prodIdx, 'produtos.length:', produtos.length);
     if (prodIdx === -1) {
       console.log('❌ Produto não encontrado');
@@ -884,16 +789,6 @@ app.post('/pedidos', async (req, res) => {
     }
     if (!prod.preco || isNaN(Number(prod.preco))) {
       console.log('❌ Valor do produto inválido');
-=======
-    if (prodIdx === -1) {
-      return res.status(404).json({ erro: 'Produto não encontrado.' });
-    }
-    const prod = produtos[prodIdx];
-    if ((prod.estoque ?? 0) < quantidade) {
-      return res.status(400).json({ erro: 'Produto sem estoque suficiente.' });
-    }
-    if (!prod.preco || isNaN(Number(prod.preco))) {
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
       return res.status(400).json({ erro: 'Valor do produto inválido.' });
     }
 
@@ -1670,11 +1565,7 @@ async function limparPedidosExpirados() {
     let alterado = false;
 
     for (const pedido of pedidos) {
-<<<<<<< HEAD
       if (pedido.status === 'Pendente' && pedido.tipo !== 'resgate') {
-=======
-      if (pedido.status === 'Pendente') {
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
         // Converter a data do pedido para Date
         const dataPedido = new Date(pedido.data.replace(/(\d{2})\/(\d{2})\/(\d{4}), (\d{2}):(\d{2}):(\d{2})/, '$3-$2-$1T$4:$5:$6'));
         const diffMinutos = (agora - dataPedido) / (1000 * 60);
@@ -1716,7 +1607,6 @@ async function limparPedidosExpirados() {
       }
     }
 
-<<<<<<< HEAD
     // Excluir pedidos recusados após 1 hora
     const pedidosParaExcluir = [];
     for (let i = pedidos.length - 1; i >= 0; i--) {
@@ -1739,11 +1629,6 @@ async function limparPedidosExpirados() {
       if (pedidosParaExcluir.length > 0) {
         console.log(`Pedidos excluídos: ${pedidosParaExcluir.join(', ')}`);
       }
-=======
-    if (alterado) {
-      await writeJson('pedidos.json', pedidos);
-      console.log('Pedidos expirados atualizados');
->>>>>>> 556f8493e5f70e744e851b2106a72a265fadfc42
     }
   } catch (err) {
     console.error('Erro ao limpar pedidos expirados:', err);
