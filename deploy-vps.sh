@@ -96,10 +96,20 @@ install_package() {
 
 # Passo 1: Atualizar sistema
 log "📦 Atualizando sistema..."
-if [[ $PACKAGE_MANAGER == "apt" ]]; then
-    apt update -qq && apt upgrade -y -qq
+if [[ $PACKAGE_MANAGER == "dnf" ]]; then
+    # Para AlmaLinux/Rocky 9+, usar dnf de forma mais eficiente
+    log "Usando dnf para atualização (pode demorar alguns minutos)..."
+    timeout 300 dnf update -y --nogpgcheck >/dev/null 2>&1 || {
+        warning "Atualização automática falhou. Continuando sem atualizar..."
+    }
+elif [[ $PACKAGE_MANAGER == "yum" ]]; then
+    timeout 300 yum update -y >/dev/null 2>&1 || {
+        warning "Atualização automática falhou. Continuando sem atualizar..."
+    }
 else
-    $PACKAGE_MANAGER update -y -q
+    $PACKAGE_MANAGER update -y -q >/dev/null 2>&1 || {
+        warning "Atualização falhou. Continuando..."
+    }
 fi
 
 # Passo 2: Instalar Node.js
