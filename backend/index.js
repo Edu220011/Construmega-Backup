@@ -115,7 +115,7 @@ app.use((req, res, next) => {
   const ip = req.ip;
   const now = Date.now();
   const windowMs = 15 * 60 * 1000; // 15 minutos
-  const maxRequests = 100; // máximo de requests por janela
+  const maxRequests = ip === '127.0.0.1' ? 1000 : 100; // mais requests para localhost
 
   if (!requestCounts.has(ip)) {
     requestCounts.set(ip, { count: 1, resetTime: now + windowMs });
