@@ -213,28 +213,38 @@ As configurações podem ser alteradas através do painel administrativo ou edit
 
 ## 🚀 Deploy em Produção
 
-### Opção 1: Deploy Automático (Recomendado)
+### Opção 1: Deploy Otimizado para AlmaLinux (Recomendado)
 
-1. **Conecte-se à sua VPS:**
-   ```bash
-   ssh root@construmega.online
-   ```
+Se sua VPS usa AlmaLinux, utilize o script otimizado:
 
-2. **Execute o script de deploy:**
-   ```bash
-   wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-vps.sh
-   chmod +x deploy-vps.sh
-   sudo ./deploy-vps.sh
-   ```
+```bash
+# 1. Conectar na VPS
+ssh root@construmega.online
 
-3. **Configure as credenciais do Mercado Pago:**
-   ```bash
-   nano /var/www/construmega/backend/.env
-   ```
+# 2. Baixar script otimizado
+wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-almalinux.sh
 
-4. **Acesse o site:** https://construmega.online
+# 3. Tornar executável
+chmod +x deploy-almalinux.sh
 
-### Opção 2: Deploy Manual
+# 4. Executar deploy
+sudo ./deploy-almalinux.sh
+```
+
+### Opção 2: Deploy Automático (Genérico)
+
+Para outros sistemas ou se o otimizado falhar:
+
+```bash
+# 1. Baixar script genérico
+wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-vps.sh
+
+# 2. Executar
+chmod +x deploy-vps.sh
+sudo ./deploy-vps.sh
+```
+
+### Opção 3: Deploy Manual
 
 Siga o guia completo em [`DEPLOY_VPS.md`](DEPLOY_VPS.md) para deploy manual passo-a-passo.
 
