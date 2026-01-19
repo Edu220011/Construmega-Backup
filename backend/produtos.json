@@ -1,0 +1,183 @@
+[
+  {
+    "nome": "Maça",
+    "descricao": "Vermelha e Suculenta",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": 2000,
+    "codigoBarras": "000000000001",
+    "foto": null,
+    "inativo": true,
+    "imagem": "/imagens/produtos/1_imagem.jpeg",
+    "id": "1",
+    "estoque": 2,
+    "promo": false,
+    "imagens": [
+      "/imagens/produtos/1_imagem_0.jpeg"
+    ]
+  },
+  {
+    "nome": "Teste",
+    "descricao": "Teste",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": 1,
+    "codigoBarras": "000000000002",
+    "foto": null,
+    "inativo": false,
+    "id": "2",
+    "promo": false,
+    "estoque": 101,
+    "imagens": [],
+    "reservado": 0
+  },
+  {
+    "nome": "Teste 2",
+    "descricao": "teste",
+    "unidade": "un",
+    "moeda": "real",
+    "preco": 2,
+    "codigoBarras": "000000000003",
+    "foto": null,
+    "inativo": false,
+    "id": "3",
+    "promo": false,
+    "estoque": 7,
+    "imagens": [],
+    "reservado": 0
+  },
+  {
+    "nome": "1",
+    "descricao": "1",
+    "unidade": "un",
+    "moeda": "real",
+    "preco": "1",
+    "codigoBarras": "3",
+    "imagens": [],
+    "id": "4",
+    "estoque": 1,
+    "promo": false,
+    "reservado": 0
+  },
+  {
+    "nome": "Teste 3",
+    "descricao": "1",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "1",
+    "codigoBarras": "000000000004",
+    "imagens": [
+      "/imagens/produtos/5_imagem_0.png"
+    ],
+    "id": "5",
+    "estoque": 0,
+    "promo": false
+  },
+  {
+    "nome": "Teste 4",
+    "descricao": "1",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "1",
+    "codigoBarras": "000000000005",
+    "imagens": [],
+    "id": "6",
+    "estoque": 0,
+    "promo": false
+  },
+  {
+    "nome": "Teste 5",
+    "descricao": "1",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "1",
+    "codigoBarras": "000000000004",
+    "imagens": [],
+    "id": "7",
+    "estoque": 0,
+    "promo": false
+  },
+  {
+    "nome": "Teste 5",
+    "descricao": "1",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": 1,
+    "codigoBarras": "'",
+    "imagens": [
+      "/imagens/produtos/8_imagem_0.png"
+    ],
+    "id": "8",
+    "inativo": false,
+    "promo": false
+  },
+  {
+    "nome": "Teste 2",
+    "descricao": "1",
+    "unidade": "UN",
+    "moeda": "real",
+    "preco": "5.99",
+    "codigoBarras": "",
+    "estoque": 2,
+    "imagens": [],
+    "id": "9",
+    "promo": false
+  },
+  {
+    "nome": "teste 6",
+    "descricao": "yteste",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "4.99",
+    "codigoBarras": "",
+    "estoque": 0,
+    "imagens": [
+      "/imagens/produtos/10_imagem_0.jpeg"
+    ],
+    "id": "10",
+    "promo": false
+  },
+  {
+    "nome": "teste",
+    "descricao": "teste",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "5",
+    "codigoBarras": "",
+    "estoque": 0,
+    "imagens": [
+      "/imagens/produtos/11_imagem_0.png"
+    ],
+    "id": "11",
+    "promo": true,
+    "foto": "/imagens/produtos/11_foto.png"
+  },
+  {
+    "nome": "teste",
+    "descricao": "teste",
+    "unidade": "un",
+    "moeda": "real",
+    "preco": "5",
+    "codigoBarras": "",
+    "estoque": 0,
+    "imagens": [
+      "/imagens/produtos/12_imagem_0.png"
+    ],
+    "id": "12",
+    "foto": "/imagens/produtos/12_foto.png"
+  },
+  {
+    "nome": "teste5",
+    "descricao": "teste",
+    "unidade": "un",
+    "moeda": "pontos",
+    "preco": "4.98",
+    "codigoBarras": "",
+    "estoque": 0,
+    "imagens": [
+      "/imagens/produtos/13_imagem_0.png"
+    ],
+    "id": "13",
+    "foto": "/imagens/produtos/13_foto.png"
+  }
+]

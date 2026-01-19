@@ -1,0 +1,18 @@
+{
+  "id": "4",
+  "nome": "ESMERILHADEIRA ELÉTRICA MEE 750W 4 1/2\"",
+  "descricao": "Poderosa esmerilhadeira para trabalhos profissionais",
+  "unidade": "un",
+  "moeda": "real",
+  "preco": 219.90,
+  "codigoBarras": "000000000004",
+  "foto": null,
+  "inativo": false,
+  "promo": true,
+  "estoque": 5,
+  "imagens": [
+    "/imagens/produtos/esmerilhadeira-1.jpg",
+    "/imagens/produtos/esmerilhadeira-2.jpg"
+  ],
+  "reservado": 0
+}
