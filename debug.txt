@@ -1,0 +1,63 @@
+== Info: Host localhost:3001 was resolved.
+== Info: IPv6: ::1
+== Info: IPv4: 127.0.0.1
+== Info:   Trying [::1]:3001...
+== Info: Connected to localhost (::1) port 3001
+== Info: using HTTP/1.x
+=> Send header, 139 bytes (0x8b)
+0000: PUT /usuarios/1 HTTP/1.1
+001a: Host: localhost:3001
+0030: User-Agent: curl/8.13.0
+0049: Accept: */*
+0056: Content-Type: application/json
+0076: Content-Length: 2
+0089: 
+=> Send data, 2 bytes (0x2)
+0000: {\
+== Info: upload completely sent off: 2 bytes
+<= Recv header, 26 bytes (0x1a)
+0000: HTTP/1.1 400 Bad Request
+<= Recv header, 23 bytes (0x17)
+0000: X-Powered-By: Express
+<= Recv header, 32 bytes (0x20)
+0000: Access-Control-Allow-Origin: *
+<= Recv header, 45 bytes (0x2d)
+0000: Content-Security-Policy: default-src 'none'
+<= Recv header, 33 bytes (0x21)
+0000: X-Content-Type-Options: nosniff
+<= Recv header, 40 bytes (0x28)
+0000: Content-Type: text/html; charset=utf-8
+<= Recv header, 22 bytes (0x16)
+0000: Content-Length: 1133
+<= Recv header, 37 bytes (0x25)
+0000: Date: Mon, 15 Dec 2025 13:49:46 GMT
+<= Recv header, 24 bytes (0x18)
+0000: Connection: keep-alive
+<= Recv header, 23 bytes (0x17)
+0000: Keep-Alive: timeout=5
+<= Recv header, 2 bytes (0x2)
+0000: 
+<= Recv data, 1133 bytes (0x46d)
+0000: <!DOCTYPE html>.<html lang="en">.<head>.<meta charset="utf-8">.<
+0040: title>Error</title>.</head>.<body>.<pre>SyntaxError: Expected pr
+0080: operty name or &#39;}&#39; in JSON at position 1 (line 1 column 
+00c0: 2)<br> &nbsp; &nbsp;at JSON.parse (&lt;anonymous&gt;)<br> &nbsp;
+0100:  &nbsp;at parse (C:\Users\MegaGiga\Desktop\site\backend\node_mod
+0140: ules\body-parser\lib\types\json.js:92:19)<br> &nbsp; &nbsp;at C:
+0180: \Users\MegaGiga\Desktop\site\backend\node_modules\body-parser\li
+01c0: b\read.js:128:18<br> &nbsp; &nbsp;at AsyncResource.runInAsyncSco
+0200: pe (node:async_hooks:214:14)<br> &nbsp; &nbsp;at invokeCallback 
+0240: (C:\Users\MegaGiga\Desktop\site\backend\node_modules\raw-body\in
+0280: dex.js:238:16)<br> &nbsp; &nbsp;at done (C:\Users\MegaGiga\Deskt
+02c0: op\site\backend\node_modules\raw-body\index.js:227:7)<br> &nbsp;
+0300:  &nbsp;at IncomingMessage.onEnd (C:\Users\MegaGiga\Desktop\site\
+0340: backend\node_modules\raw-body\index.js:287:7)<br> &nbsp; &nbsp;a
+0380: t IncomingMessage.emit (node:events:508:28)<br> &nbsp; &nbsp;at 
+03c0: endReadableNT (node:internal/streams/readable:1701:12)<br> &nbsp
+0400: ; &nbsp;at process.processTicksAndRejections (node:internal/proc
+0440: ess/task_queues:89:21)</pre>.</body>.</html>.
+== Info: Connection #0 to host localhost left intact
+== Info: URL rejected: Port number was not a decimal number between 0 and 65535
+== Info: closing connection #-1
+== Info: URL rejected: Port number was not a decimal number between 0 and 65535
+== Info: closing connection #-1
