@@ -1,6 +1,7 @@
 console.log('=== INÍCIO DO ARQUIVO INDEX.JS - VERSÃO SEM MIDDLEWARES ESTÁTICOS ===');
 const express = require('express');
-const fs = require('fs').promises;
+const fs = require('fs');
+const fsPromises = require('fs').promises;
 const path = require('path');
 const cors = require('cors');
 const crypto = require('crypto');
@@ -31,7 +32,7 @@ async function logToFile(message) {
   try {
     const logPath = path.join(__dirname, 'debug.log');
     const timestamp = new Date().toISOString();
-    await fs.appendFile(logPath, `[${timestamp}] ${message}\n`);
+    await fsPromises.appendFile(logPath, `[${timestamp}] ${message}\n`);
   } catch (err) {
     console.error('Erro ao escrever log:', err);
   }
@@ -399,7 +400,7 @@ app.get('/mp-public-key', async (req, res) => {
 const getFile = (file) => path.join(__dirname, file);
 async function readJson(file) {
   try {
-    const data = await fs.readFile(getFile(file), 'utf8');
+    const data = await fsPromises.readFile(getFile(file), 'utf8');
     return JSON.parse(data);
   } catch {
     return Array.isArray(file) ? [] : {};
@@ -407,7 +408,7 @@ async function readJson(file) {
 }
 async function writeJson(file, data) {
   try {
-    await fs.writeFile(getFile(file), JSON.stringify(data, null, 2));
+    await fsPromises.writeFile(getFile(file), JSON.stringify(data, null, 2));
     console.log(`✅ Arquivo ${file} escrito com sucesso`);
   } catch (err) {
     console.error(`❌ Erro ao escrever ${file}:`, err.message);
