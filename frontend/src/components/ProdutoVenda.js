@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PainelCompraProduto from './PainelCompraProduto';
+import { apiFetch } from '../utils/api';
 
 // Hook para buscar dados da empresa (endereço)
 function useEmpresaConfig() {
   const [empresa, setEmpresa] = useState(null);
   useEffect(() => {
-    fetch('/api/configuracoes')
+    apiFetch('/configuracoes')
       .then(res => res.json())
       .then(data => setEmpresa(data));
   }, []);

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PainelCompraProduto from './PainelCompraProduto';
+import { apiFetch } from '../utils/api';
 
 // Hook para buscar dados da empresa (endereço)
 function useEmpresaConfig() {
   const [empresa, setEmpresa] = useState(null);
   useEffect(() => {
-    fetch('/api/configuracoes')
+    apiFetch('/configuracoes')
       .then(res => res.json())
       .then(data => setEmpresa(data));
   }, []);
@@ -25,7 +26,7 @@ function ProdutoPontos({ cliente }) {
   console.log('ProdutoPontos montado com id:', id, 'cliente:', cliente);
 
   useEffect(() => {
-    fetch('/produtos')
+    apiFetch('/produtos')
       .then(res => res.json())
       .then(produtos => {
         console.log('Produtos no ProdutoPontos:', produtos);
@@ -40,7 +41,7 @@ function ProdutoPontos({ cliente }) {
     if (!produto || !cliente) return;
     try {
       // Buscar produto atualizado do backend
-      const produtosAtualizados = await fetch('/produtos').then(r => r.json());
+      const produtosAtualizados = await apiFetch('/produtos').then(r => r.json());
       const produtoAtual = produtosAtualizados.find(p => String(p.id) === String(produto.id));
       if (!produtoAtual) {
         alert('Produto não encontrado.');
@@ -50,9 +51,8 @@ function ProdutoPontos({ cliente }) {
         alert(`Estoque insuficiente. Disponível: ${produtoAtual.estoque ?? 0} unidades.`);
         return;
       }
-      const res = await fetch('/pedidos', {
+      const res = await apiFetch('/pedidos', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           usuarioId: cliente.id,
           produtoId: produtoAtual.id,
@@ -66,7 +66,7 @@ function ProdutoPontos({ cliente }) {
         return;
       }
       // Atualiza pontos do usuário automaticamente após resgate
-      const usuarioAtualizado = await fetch('/usuarios/' + cliente.id).then(r=>r.json());
+      const usuarioAtualizado = await apiFetch('/usuarios/' + cliente.id).then(r=>r.json());
       if (typeof window.setCliente === 'function') {
         window.setCliente(usuarioAtualizado);
       }
