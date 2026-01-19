@@ -211,6 +211,55 @@ As configurações podem ser alteradas através do painel administrativo ou edit
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+## 🚀 Deploy em Produção
+
+### Opção 1: Deploy Automático (Recomendado)
+
+1. **Conecte-se à sua VPS:**
+   ```bash
+   ssh root@construmega.online
+   ```
+
+2. **Execute o script de deploy:**
+   ```bash
+   wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-vps.sh
+   chmod +x deploy-vps.sh
+   sudo ./deploy-vps.sh
+   ```
+
+3. **Configure as credenciais do Mercado Pago:**
+   ```bash
+   nano /var/www/construmega/backend/.env
+   ```
+
+4. **Acesse o site:** https://construmega.online
+
+### Opção 2: Deploy Manual
+
+Siga o guia completo em [`DEPLOY_VPS.md`](DEPLOY_VPS.md) para deploy manual passo-a-passo.
+
+### Arquivos de Configuração
+
+- `DEPLOY_VPS.md` - Guia completo de deploy
+- `deploy-vps.sh` - Script de deploy automatizado
+- `ecosystem.config.js` - Configuração PM2
+- `monitor.sh` - Script de monitoramento
+
+### Pós-Deploy
+
+- **Monitoramento:** `./monitor.sh`
+- **Logs:** `pm2 logs construmega-backend`
+- **Reinício:** `pm2 restart construmega-backend`
+- **Atualização:** `git pull && npm run build`
+
+### Credenciais de Produção
+
+**Administrador:**
+- Email: `admin@admin.com`
+- Senha: `admin`
+
+Configure as variáveis de ambiente do Mercado Pago no arquivo `.env` do backend.
+
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
