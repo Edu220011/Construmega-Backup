@@ -1,0 +1,8 @@
+{
+  "ignore_dirs": [
+    "pagefile.sys",
+    "swapfile.sys",
+    "hiberfil.sys",
+    "System Volume Information"
+  ]
+}

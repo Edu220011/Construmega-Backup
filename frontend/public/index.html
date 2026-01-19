@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo-construmega.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo-construmega.png" />
+    <link rel="apple-touch-icon" href="/logo-construmega.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="description" content="Construmega - Loja de Materiais de Construção" />
+    <link rel="manifest" href="/manifest.json" />
+    <title>CONSTRUMEGA</title>
+
+    <!-- Proteções de Segurança -->
+    <script>
+      // Desabilitar F12 e atalhos de DevTools
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' ||
+            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+            (e.ctrlKey && e.key === 'U')) {
+          e.preventDefault();
+          alert('Acesso às ferramentas de desenvolvedor não é permitido!');
+          return false;
+        }
+      });
+
+      // Desabilitar botão direito
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        alert('Menu de contexto desabilitado!');
+        return false;
+      });
+
+      // Detectar DevTools aberto
+      let devtoolsOpen = false;
+      const threshold = 160;
+
+      setInterval(function() {
+        if (window.outerHeight - window.innerHeight > threshold ||
+            window.outerWidth - window.innerWidth > threshold) {
+          if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            alert('Ferramentas de desenvolvedor detectadas! Feche-as para continuar.');
+          }
+        } else {
+          devtoolsOpen = false;
+        }
+      }, 500);
+
+      // Anti-debugging básico
+      let debugCount = 0;
+      const originalDebugger = window.debugger;
+      window.debugger = function() {
+        debugCount++;
+        if (debugCount > 2) {
+          alert('Debugging não é permitido!');
+          window.location.reload();
+        }
+      };
+
+      // Prevenir seleção e cópia
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener('copy', function(e) {
+        e.preventDefault();
+        alert('Cópia não permitida!');
+        return false;
+      });
+    </script>
+  </head>
+  <body style="background-image: url('bg-site.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed; background-position: center center;">
+    <noscript>Você precisa habilitar o JavaScript para rodar esta aplicação.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

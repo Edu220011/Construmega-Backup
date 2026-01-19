@@ -1,0 +1,62 @@
+.perfil-dropdown-wrap {
+  position: relative;
+  display: inline-block;
+}
+.perfil-dropdown-btn {
+  background: #e9ecf3;
+  color: #2d3a4b;
+  margin-right: 8px;
+  cursor: pointer;
+  padding: 6px 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  transition: background 0.2s;
+  min-width: unset;
+  height: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px #333e8c33;
+}
+.perfil-dropdown-btn:hover, .perfil-dropdown-btn:focus {
+  background: #d2d8e6;
+}
+.perfil-dropdown-menu {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 160px;
+  background: #fff;
+  border: 1.5px solid #bfcfff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #2d3a4b22;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.perfil-dropdown-wrap:hover .perfil-dropdown-menu,
+.perfil-dropdown-wrap:focus-within .perfil-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.perfil-dropdown-item {
+  padding: 12px 20px;
+  color: #2d3a4b;
+  font-size: 15px;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.18s;
+}
+.perfil-dropdown-item:hover {
+  background: #e9ecf3;
+}
