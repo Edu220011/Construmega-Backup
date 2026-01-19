@@ -211,65 +211,6 @@ As configurações podem ser alteradas através do painel administrativo ou edit
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 🚀 Deploy em Produção
-
-### Opção 1: Deploy Otimizado para AlmaLinux (Recomendado)
-
-Se sua VPS usa AlmaLinux, utilize o script otimizado:
-
-```bash
-# 1. Conectar na VPS
-ssh root@construmega.online
-
-# 2. Baixar script otimizado
-wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-almalinux.sh
-
-# 3. Tornar executável
-chmod +x deploy-almalinux.sh
-
-# 4. Executar deploy
-sudo ./deploy-almalinux.sh
-```
-
-### Opção 2: Deploy Automático (Genérico)
-
-Para outros sistemas ou se o otimizado falhar:
-
-```bash
-# 1. Baixar script genérico
-wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-vps.sh
-
-# 2. Executar
-chmod +x deploy-vps.sh
-sudo ./deploy-vps.sh
-```
-
-### Opção 3: Deploy Manual
-
-Siga o guia completo em [`DEPLOY_VPS.md`](DEPLOY_VPS.md) para deploy manual passo-a-passo.
-
-### Arquivos de Configuração
-
-- `DEPLOY_VPS.md` - Guia completo de deploy
-- `deploy-vps.sh` - Script de deploy automatizado
-- `ecosystem.config.js` - Configuração PM2
-- `monitor.sh` - Script de monitoramento
-
-### Pós-Deploy
-
-- **Monitoramento:** `./monitor.sh`
-- **Logs:** `pm2 logs construmega-backend`
-- **Reinício:** `pm2 restart construmega-backend`
-- **Atualização:** `git pull && npm run build`
-
-### Credenciais de Produção
-
-**Administrador:**
-- Email: `admin@admin.com`
-- Senha: `admin`
-
-Configure as variáveis de ambiente do Mercado Pago no arquivo `.env` do backend.
-
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
