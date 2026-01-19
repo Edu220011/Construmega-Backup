@@ -117,7 +117,7 @@
     "valor": 4,
     "tipo": "venda",
     "data": "19/01/2026, 01:32:07",
-    "status": "Pendente",
+    "status": "Recusado",
     "payment_id": null,
     "external_reference": "carrinho_935083_1768797127309",
     "init_point": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=3100673937-bafa70f0-2d14-4e02-9ba9-a398051a6d8e",
