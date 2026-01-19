@@ -23,7 +23,7 @@ function ProdutoVenda({ cliente }) {
   const empresaConfig = useEmpresaConfig();
 
   useEffect(() => {
-    fetch('/produtos')
+    apiFetch('/produtos')
       .then(res => res.json())
       .then(produtos => {
         const prod = produtos.find(p => String(p.id) === String(id) && (String(p.moeda).toLowerCase() === 'real' || String(p.moeda).toLowerCase() === 'r$'));
