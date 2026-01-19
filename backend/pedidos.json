@@ -94,33 +94,5 @@
     "data": "19/01/2026, 01:31:42",
     "status": "Pendente",
     "comprovante": "373794"
-  },
-  {
-    "id": "274245",
-    "usuarioId": "935083",
-    "usuarioNome": "Eduardo Antonio",
-    "itens": [
-      {
-        "produtoId": "3",
-        "produtoNome": "Teste 2",
-        "quantidade": 2,
-        "valorUnitario": 2
-      }
-    ],
-    "produtoId": "3",
-    "produtoNome": "Teste 2",
-    "quantidade": 2,
-    "valorProduto": 2,
-    "localRetirada": "Av. Henrique Agostineto, 502A - Várzea, Caconde/SP.",
-    "metodoEntrega": "retirada",
-    "pontos": 0,
-    "valor": 4,
-    "tipo": "venda",
-    "data": "19/01/2026, 01:32:07",
-    "status": "Recusado",
-    "payment_id": null,
-    "external_reference": "carrinho_935083_1768797127309",
-    "init_point": "https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=3100673937-bafa70f0-2d14-4e02-9ba9-a398051a6d8e",
-    "comprovante": "CMP-MKKO52QO-B86B3W"
   }
 ]
