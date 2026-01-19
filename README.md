@@ -211,6 +211,44 @@ As configurações podem ser alteradas através do painel administrativo ou edit
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
+## 🚀 Deploy em Produção
+
+### 🚀 **Opção MAIS SIMPLES: Setup via ZIP (Recomendado)**
+
+Para evitar problemas de Git, use este método direto:
+
+```bash
+# 1. Baixar script simples
+wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/setup-simples.sh
+
+# 2. Executar (baixa ZIP e configura tudo)
+chmod +x setup-simples.sh
+sudo ./setup-simples.sh
+```
+
+**Vantagens:**
+- ✅ **Sem problemas de Git** (merge, rebase, conflitos)
+- ✅ **Download direto** via ZIP do GitHub
+- ✅ **Instalação completa** em um comando
+- ✅ **Backup automático** da versão anterior
+
+### Opção 2: Deploy Automático (Git-based)
+
+Se preferir usar Git:
+
+```bash
+# 1. Baixar script genérico
+wget https://raw.githubusercontent.com/Edu220011/Construmega-Backup/master/deploy-vps.sh
+
+# 2. Executar
+chmod +x deploy-vps.sh
+sudo ./deploy-vps.sh
+```
+
+### Opção 3: Deploy Manual
+
+Siga o guia completo em [`DEPLOY_VPS.md`](DEPLOY_VPS.md) para deploy manual passo-a-passo.
+
 ## 📝 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
