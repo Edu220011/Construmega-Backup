@@ -10,8 +10,8 @@
     "id": "486650",
     "ativo": true,
     "pontos": 5,
-    "tokenAtual": "767880422d9776b56c1e0253785b7ecd6afa79ae8815d81e9652b397c0f0eb1c",
-    "tokenExpiracao": 1768870800506
+    "tokenAtual": "e878cd6c766e0d6811031c0bd5ded734c9aa6d8fdc71129b37463eee0a1ae53e",
+    "tokenExpiracao": 1768881285682
   },
   {
     "nome": "Marcus Vinicius da Silva Goulart",
@@ -56,7 +56,7 @@
     "tipo": "cliente",
     "id": "935083",
     "pontos": 49996,
-    "tokenAtual": "f12eb5c1f052cb4a27a44f430f85efa527f5cefecc3fba07c1eb4bff8138d4e6",
-    "tokenExpiracao": 1768873643793
+    "tokenAtual": "44fc5d6e06a8aea2104999cb4294a0958d4d11d2239210ff006eeb10b58766b8",
+    "tokenExpiracao": 1768880907224
   }
 ]
