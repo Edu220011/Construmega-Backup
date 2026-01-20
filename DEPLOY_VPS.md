@@ -189,6 +189,20 @@ server {
         proxy_read_timeout 60s;
     }
 
+    # Imagens de produtos (servidas pelo backend Node.js)
+    location /imagens/ {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        
+        # Cache de imagens (1 semana)
+        expires 7d;
+        add_header Cache-Control "public, max-age=604800";
+    }
+
     # Outras rotas da API
     location ~ ^/(login|usuarios|produtos|pedidos|resgates|pagamento|chave) {
         proxy_pass http://localhost:3000;
