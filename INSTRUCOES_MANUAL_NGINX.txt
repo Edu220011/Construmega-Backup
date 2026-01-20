@@ -1,0 +1,54 @@
+INSTRUÇÕES PARA CORRIGIR MANUALMENTE NO NGINX
+================================================
+
+1. Conecte na VPS via SSH
+
+2. Execute EXATAMENTE estes comandos (um por um):
+
+---
+
+# Fazer backup
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+
+# Editar o arquivo Nginx
+sudo nano /etc/nginx/nginx.conf
+
+---
+
+3. Encontre a linha que começa com:
+   location ~ ^/(login|usuarios|produtos|pedidos|resgates|pagamento|chave)
+
+   TROQUE POR:
+   location ~ ^/(login|usuarios|produtos|pedidos|resgates|pagamento|chave|configuracoes)
+
+   (basicamente: adicione |configuracoes ANTES do fechamento do parêntese)
+
+4. Salve o arquivo:
+   Ctrl+O
+   Enter
+   Ctrl+X
+
+5. Teste a configuração:
+   sudo nginx -t
+
+6. Se disser "OK", recarregue:
+   sudo systemctl reload nginx
+
+7. Teste se funciona:
+   curl https://construmega.online/configuracoes | jq .
+
+   Deve retornar JSON com os dados da empresa.
+
+---
+
+OU, se preferir fazer tudo de uma vez com sed (uma linha):
+
+sudo sed -i 's/location ~ \^\\\/(login|usuarios|produtos|pedidos|resgates|pagamento|chave)/location ~ ^\/(login|usuarios|produtos|pedidos|resgates|pagamento|chave|configuracoes)/' /etc/nginx/nginx.conf && sudo nginx -t && sudo systemctl reload nginx
+
+---
+
+Depois faça hard refresh no navegador:
+WINDOWS/LINUX: Ctrl+Shift+R
+MAC: Cmd+Shift+R
+
+Acesse https://construmega.online e os dados da empresa devem aparecer!
