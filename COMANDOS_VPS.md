@@ -243,8 +243,8 @@ cd /root/Construmega/backend && npm start
 ### Permissões das imagens
 ```bash
 # Se tiver problema de acesso
-chmod 755 /root/Construmega/backend/public/imagens/produtos/
-chmod 644 /root/Construmega/backend/public/imagens/produtos/*
+chmod 755 /var/www/site/backend/public/imagens/produtos/
+chmod 644 /var/www/site/backend/public/imagens/produtos/*
 ```
 
 ---
@@ -254,7 +254,7 @@ chmod 644 /root/Construmega/backend/public/imagens/produtos/*
 - Arquivo editado: `/etc/nginx/sites-available/construmega`
 - Serviço reiniciado: `nginx`
 - Backend em: `localhost:3000`
-- Pasta de imagens: `/root/Construmega/backend/public/imagens/produtos/`
+- Pasta de imagens: `/var/www/site/backend/public/imagens/produtos/`
 
 ---
 
