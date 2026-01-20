@@ -583,8 +583,19 @@ app.post('/api/produtos', async (req, res) => {
   // Converter base64 para arquivo se necessário
   if (imagens.length > 0) {
     const imagemDir = path.join(__dirname, 'public/imagens/produtos');
-    if (!fs.existsSync(imagemDir)) {
-      fs.mkdirSync(imagemDir, { recursive: true });
+    
+    // Criar diretório de forma síncrona (já que estamos numa rota POST)
+    try {
+      if (!fs.existsSync || typeof fs.existsSync !== 'function') {
+        // Fallback: tentar criar diretório mesmo que existsSync não funcione
+        fs.mkdirSync(imagemDir, { recursive: true });
+      } else {
+        if (!fs.existsSync(imagemDir)) {
+          fs.mkdirSync(imagemDir, { recursive: true });
+        }
+      }
+    } catch (err) {
+      console.error('❌ Erro ao criar diretório:', err.message);
     }
     
     const novasImagens = [];
@@ -1744,9 +1755,11 @@ adicionarComprovantesFaltantes();
 async function converterBase64ParaURL(produtos) {
   const imagemDir = path.join(__dirname, 'public/imagens/produtos');
   
-  // Garantir que o diretório existe
-  if (!fs.existsSync(imagemDir)) {
-    await fs.promises.mkdir(imagemDir, { recursive: true });
+  try {
+    // Garantir que o diretório existe (usar apenas fs.promises)
+    await fsPromises.mkdir(imagemDir, { recursive: true });
+  } catch (err) {
+    console.error('❌ Erro ao criar diretório de imagens:', err.message);
   }
 
   for (const produto of produtos) {
@@ -1771,14 +1784,22 @@ async function converterBase64ParaURL(produtos) {
             const nomeArquivo = `${produto.id}_${i}.${tipo}`;
             const caminhoArquivo = path.join(imagemDir, nomeArquivo);
             
-            // Verificar se arquivo já existe
-            if (!fs.existsSync(caminhoArquivo)) {
+            // Verificar se arquivo já existe (usar fs.promises.stat)
+            let arquivoExiste = false;
+            try {
+              await fsPromises.stat(caminhoArquivo);
+              arquivoExiste = true;
+            } catch (err) {
+              if (err.code !== 'ENOENT') throw err;
+            }
+            
+            if (!arquivoExiste) {
               // Extrair dados base64
               const base64Data = imagem.replace(/^data:image\/.*?;base64,/, '');
               const buffer = Buffer.from(base64Data, 'base64');
               
               // Salvar arquivo
-              await fs.promises.writeFile(caminhoArquivo, buffer);
+              await fsPromises.writeFile(caminhoArquivo, buffer);
               console.log(`✅ Imagem salva: /imagens/produtos/${nomeArquivo}`);
             }
             
